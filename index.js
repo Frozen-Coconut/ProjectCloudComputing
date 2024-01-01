@@ -5,6 +5,10 @@ const port = 3000;
 const CharacterAI = require('node_characterai');
 const characterAI = new CharacterAI();
 
+const cors = require('cors');
+
+app.use(cors());
+
 // TODO: create character list
 // implement character list to /chat
 // create caracter list endpoint
@@ -38,7 +42,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.post('/', (req, res)=>{
-    res.send('API is running');
+    return res.send('API is running');
 });
 
 app.post('/chat', async (req, res)=>{
@@ -51,7 +55,7 @@ app.post('/chat', async (req, res)=>{
     
         console.log(response);
     
-        return res.send(response.text);    
+        return res.send(response.text);
     }catch(e){
         console.log(e.message)
         return res.send(e.message);
