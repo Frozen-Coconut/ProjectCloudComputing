@@ -64,12 +64,13 @@ app.post('/chat', async (req, res)=>{
     
 });
 
-app.get('/history', async (req, res)=>{
+app.post('/history', async (req, res)=>{
     const { character_name } = req.body;
     try{
         const characterID = characterList.find(character => character.character_name === character_name).characterID;
         const chat = await characterAI.createOrContinueChat(characterID);
         const history = await chat.fetchHistory();
+        console.log(history.messages[0].text)
         return res.send(history.messages[0].text);
     }catch(e){
         console.log(e.message)
