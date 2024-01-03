@@ -57,7 +57,7 @@ app.post('/chat', async (req, res)=>{
     
         return res.send(response.text);
     }catch(e){
-        console.log(e.message)
+        console.log(e)
         return res.send(e.message);
     }
   
@@ -73,8 +73,19 @@ app.post('/history', async (req, res)=>{
         console.log(history.messages[0].text)
         return res.send(history.messages[0].text);
     }catch(e){
-        console.log(e.message)
+        console.log(e)
         return res.send(e.message);
+    }
+});
+
+app.post('/login', async (req, res)=>{
+    try{
+        if (characterAI.isAuthenticated()) {
+            characterAI.unauthenticate();
+        }
+        characterAI.authenticateAsGuest();
+    }catch(e){
+        console.log(e);
     }
 });
 
