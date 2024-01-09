@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-const CharacterAI = require('node_characterai');
+const CharacterAI = require('./node_characterai');
 const characterAI = new CharacterAI();
 
 const cors = require('cors');
