@@ -9,12 +9,6 @@ const cors = require('cors');
 
 app.use(cors());
 
-// TODO: create character list
-// implement character list to /chat
-// create caracter list endpoint
-// create character list 
-// create character detail
-
 const characterList = [
     {
         character_name: "Novel Writing AI",
